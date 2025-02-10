@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://iialvcps232c"]
+
+[ext_resource type="Texture2D" uid="uid://crlldoprqqkhj" path="res://star-removebg-preview.png" id="1_fwy57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heog3"]
+size = Vector2(283.333, 258.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vgi6"]
+size = Vector2(283.333, 258.333)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+scale = Vector2(0.12, 0.12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2(1.58946e-05, 12.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_heog3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(1.19209e-07, 1)
+scale = Vector2(0.12, 0.12)
+shape = SubResource("RectangleShape2D_1vgi6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_fwy57")

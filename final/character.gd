@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 170.0
+const SPEED = 120.0
 
 
 
