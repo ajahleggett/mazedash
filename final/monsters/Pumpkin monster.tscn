@@ -1,6 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c820mrcdq3dfq"]
+[gd_scene load_steps=14 format=3 uid="uid://c820mrcdq3dfq"]
 
 [ext_resource type="Texture2D" uid="uid://cqj8jvmgmco00" path="res://monsters/pumpkin monster.png" id="1_1uimn"]
+[ext_resource type="Script" path="res://monsters/pumpkin_monster.gd" id="1_4f1rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_es524"]
+size = Vector2(17, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmava"]
 atlas = ExtResource("1_1uimn")
@@ -83,10 +87,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_es524"]
-size = Vector2(17, 33)
+[node name="pumpkin" type="CharacterBody2D"]
+script = ExtResource("1_4f1rl")
 
-[node name="pumpkin" type="RigidBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_es524")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
@@ -102,6 +108,5 @@ position = Vector2(0.6, 2.8)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_es524")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3.5)
-shape = SubResource("RectangleShape2D_es524")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true

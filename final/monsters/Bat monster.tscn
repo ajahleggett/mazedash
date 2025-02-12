@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://3kxvhkqqu6bx"]
+[gd_scene load_steps=18 format=3 uid="uid://3kxvhkqqu6bx"]
 
 [ext_resource type="Texture2D" uid="uid://dmqb1ovdmfp8j" path="res://monsters/bat monster.png" id="1_7whs6"]
+[ext_resource type="Script" path="res://monsters/bat_monster.gd" id="1_e64qw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xoy1l"]
 radius = 15.0333
@@ -115,7 +116,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_as8il"]
 radius = 16.0312
 
-[node name="bat" type="RigidBody2D"]
+[node name="bat" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_e64qw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xoy1l")
@@ -130,3 +133,6 @@ frame_progress = 0.284651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 shape = SubResource("CircleShape2D_as8il")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
