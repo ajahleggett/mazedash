@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://he2wg5wlgm6b"]
+
+[ext_resource type="Texture2D" uid="uid://bvhvor5hq72cy" path="res://monsters/yellow flag.png" id="1_5fwhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w11wx"]
+size = Vector2(820, 1135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igt1h"]
+size = Vector2(79.5, 110)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5fwhw")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(11, -0.250003)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_w11wx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(15.25, 1)
+shape = SubResource("RectangleShape2D_igt1h")

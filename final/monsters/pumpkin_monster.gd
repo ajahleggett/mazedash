@@ -7,10 +7,11 @@ const JUMP_VELOCITY = -400.0
 
 
 func _physics_process(delta: float) -> void:
-	nav.target_position = Global.player.global_position
-	var next_pos = nav.get_next_path_position()
-	velocity = global_position.direction_to(next_pos) * movement_speed
-	# Add the gravity.
+	if Global.player:
+		nav.target_position = Global.player.global_position
+		var next_pos = nav.get_next_path_position()
+		velocity = global_position.direction_to(next_pos) * movement_speed
+		# Add the gravity.
 
 
 	# Get the input direction and handle the movement/deceleration.
