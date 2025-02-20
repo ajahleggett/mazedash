@@ -6,6 +6,7 @@ const SPEED = 120.0
 func _ready():
 	Global.player = self
 
+#Global.stats
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,3 +39,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	print("player area entered")
+	pass # Replace with function body.
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	print('player body entered')
+	pass # Replace with function body.

@@ -15,7 +15,6 @@ height = 420.0
 scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(1, 1)
 texture = ExtResource("1_lnfjh")
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]

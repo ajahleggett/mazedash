@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dau20c3244iid"]
+
+[ext_resource type="Script" path="res://pumpkinrespawn.gd" id="1_tek86"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_tek86")
