@@ -1,8 +1,14 @@
-[gd_scene load_steps=46 format=3 uid="uid://ihj78221i5oc"]
+[gd_scene load_steps=72 format=3 uid="uid://ihj78221i5oc"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_4oddw"]
 [ext_resource type="Texture2D" uid="uid://unstw8y8yej4" path="res://character-removebg-preview.png" id="1_qt7by"]
 [ext_resource type="Texture2D" uid="uid://b0th2qx71n46r" path="res://monsters/pixel_character_dark_red.png" id="3_04w22"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" id="4_7n0g7"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" id="5_llpri"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/State.gd" id="6_rey42"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" id="7_vfwaa"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/BooleanCondition.gd" id="8_afuhf"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" id="9_h3pta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_irwct"]
 texture = ExtResource("1_qt7by")
@@ -297,7 +303,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_of1e2")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack right",
 "speed": 5.0
 }, {
@@ -400,6 +406,156 @@ size = Vector2(20, 35)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxnx2"]
 size = Vector2(20, 35)
 
+[sub_resource type="Resource" id="Resource_e4ibp"]
+script = ExtResource("6_rey42")
+name = "Entry"
+metadata/graph_offset = Vector2(86, 182)
+
+[sub_resource type="Resource" id="Resource_brgvh"]
+script = ExtResource("6_rey42")
+name = "standing"
+metadata/graph_offset = Vector2(462, 262)
+
+[sub_resource type="Resource" id="Resource_eq16x"]
+script = ExtResource("6_rey42")
+name = "walking"
+metadata/graph_offset = Vector2(345, 42)
+
+[sub_resource type="Resource" id="Resource_r76nk"]
+script = ExtResource("6_rey42")
+name = "attack"
+metadata/graph_offset = Vector2(886, 22)
+
+[sub_resource type="Resource" id="Resource_4cond"]
+script = ExtResource("7_vfwaa")
+from = "Entry"
+to = "standing"
+conditions = {}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_0wnot"]
+script = ExtResource("8_afuhf")
+value = true
+comparation = 0
+name = "moving"
+
+[sub_resource type="Resource" id="Resource_8bg6b"]
+script = ExtResource("7_vfwaa")
+from = "standing"
+to = "walking"
+conditions = {
+"moving": SubResource("Resource_0wnot")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_rwayn"]
+script = ExtResource("9_h3pta")
+name = "attack"
+
+[sub_resource type="Resource" id="Resource_trkdl"]
+script = ExtResource("7_vfwaa")
+from = "standing"
+to = "attack"
+conditions = {
+"attack": SubResource("Resource_rwayn")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_gyg1q"]
+script = ExtResource("8_afuhf")
+value = false
+comparation = 0
+name = "moving"
+
+[sub_resource type="Resource" id="Resource_8wdfm"]
+script = ExtResource("7_vfwaa")
+from = "walking"
+to = "standing"
+conditions = {
+"moving": SubResource("Resource_gyg1q")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_jdpe5"]
+script = ExtResource("9_h3pta")
+name = "attack"
+
+[sub_resource type="Resource" id="Resource_tt578"]
+script = ExtResource("7_vfwaa")
+from = "walking"
+to = "attack"
+conditions = {
+"attack": SubResource("Resource_jdpe5")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_ymu61"]
+script = ExtResource("8_afuhf")
+value = true
+comparation = 0
+name = "moving"
+
+[sub_resource type="Resource" id="Resource_7cnqb"]
+script = ExtResource("9_h3pta")
+name = "attack end"
+
+[sub_resource type="Resource" id="Resource_lnae5"]
+script = ExtResource("7_vfwaa")
+from = "attack"
+to = "walking"
+conditions = {
+"attack end": SubResource("Resource_7cnqb"),
+"moving": SubResource("Resource_ymu61")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_8hlud"]
+script = ExtResource("8_afuhf")
+value = false
+comparation = 0
+name = "moving"
+
+[sub_resource type="Resource" id="Resource_nn6hc"]
+script = ExtResource("9_h3pta")
+name = "attack end"
+
+[sub_resource type="Resource" id="Resource_nko7o"]
+script = ExtResource("7_vfwaa")
+from = "attack"
+to = "standing"
+conditions = {
+"attack end": SubResource("Resource_nn6hc"),
+"moving": SubResource("Resource_8hlud")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_malbu"]
+script = ExtResource("5_llpri")
+states = {
+"Entry": SubResource("Resource_e4ibp"),
+"attack": SubResource("Resource_r76nk"),
+"standing": SubResource("Resource_brgvh"),
+"walking": SubResource("Resource_eq16x")
+}
+transitions = {
+"Entry": {
+"standing": SubResource("Resource_4cond")
+},
+"attack": {
+"standing": SubResource("Resource_nko7o"),
+"walking": SubResource("Resource_lnae5")
+},
+"standing": {
+"attack": SubResource("Resource_trkdl"),
+"walking": SubResource("Resource_8bg6b")
+},
+"walking": {
+"attack": SubResource("Resource_tt578"),
+"standing": SubResource("Resource_8wdfm")
+}
+}
+name = ""
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_4oddw")
 
@@ -411,9 +567,8 @@ tile_set = SubResource("TileSet_plr3c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yy45l")
-animation = &"standing"
+animation = &"attack right"
 autoplay = "standing"
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
@@ -428,5 +583,11 @@ shape = SubResource("RectangleShape2D_jxnx2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
 
+[node name="StateMachinePlayer" type="Node" parent="."]
+script = ExtResource("4_7n0g7")
+state_machine = SubResource("Resource_malbu")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="updated" from="StateMachinePlayer" to="." method="_on_state_machine_player_updated"]
