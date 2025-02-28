@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var smp: Node = $StateMachinePlayer
 
-const SPEED = 120.0
+const SPEED = 110.0
 
 func _ready():
 	Global.player = self

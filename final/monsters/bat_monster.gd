@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var movement_speed = 250.0
+@export var movement_speed = 90.0
 const JUMP_VELOCITY = -400.0
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 

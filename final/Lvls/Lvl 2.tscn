@@ -36,6 +36,9 @@ polygon = PackedVector2Array(915, 311, 898, 500, 819, 511, 813, 783, 844, 778, 8
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(603, 302, 647, 300, 636, 831, 597, 850, 597, 901, 633, 912, 635, 936, 557, 939, 557, 804, 602, 795)
 
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(216, 585, 164, 589, 163, 656, 221, 656, 218, 701, 134, 695, 132, 547, 215, 543)
+
 [node name="flag2" type="Sprite2D" parent="."]
 position = Vector2(1157, 597)
 scale = Vector2(0.3, 0.3)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var movement_speed = 100.0
+@export var movement_speed = 80.0
 const JUMP_VELOCITY = -400.0
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
@@ -19,6 +19,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func walking():
+	$AnimatedSprite2D.play('walking left')
+	
+func standing():
+	$AnimatedSprite2D.play('standing')
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	print("Hurtbox area entered")
