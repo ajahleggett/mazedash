@@ -97,42 +97,27 @@ script = ExtResource("5_kk6x1")
 name = "Entry"
 metadata/graph_offset = Vector2(266, 322)
 
-[sub_resource type="Resource" id="Resource_i77ip"]
-script = ExtResource("5_kk6x1")
-name = "walking"
-metadata/graph_offset = Vector2(465, 222)
-
 [sub_resource type="Resource" id="Resource_i6h33"]
 script = ExtResource("5_kk6x1")
 name = "standing"
 metadata/graph_offset = Vector2(602, 322)
 
-[sub_resource type="Resource" id="Resource_281tc"]
-script = ExtResource("6_qeu5m")
-value = false
-comparation = 0
-name = "moving"
+[sub_resource type="Resource" id="Resource_i77ip"]
+script = ExtResource("5_kk6x1")
+name = "walking"
+metadata/graph_offset = Vector2(465, 222)
 
-[sub_resource type="Resource" id="Resource_1rce6"]
+[sub_resource type="Resource" id="Resource_7xm2h"]
 script = ExtResource("6_l1c16")
-from = "walking"
+from = "Entry"
 to = "standing"
-conditions = {
-"moving": SubResource("Resource_281tc")
-}
+conditions = {}
 priority = 0
 
 [sub_resource type="Resource" id="Resource_6udiu"]
 script = ExtResource("6_l1c16")
 from = "Entry"
 to = "walking"
-conditions = {}
-priority = 0
-
-[sub_resource type="Resource" id="Resource_7xm2h"]
-script = ExtResource("6_l1c16")
-from = "Entry"
-to = "standing"
 conditions = {}
 priority = 0
 
@@ -148,6 +133,21 @@ from = "standing"
 to = "walking"
 conditions = {
 "moving": SubResource("Resource_h1xvt")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_281tc"]
+script = ExtResource("6_qeu5m")
+value = false
+comparation = 0
+name = "moving"
+
+[sub_resource type="Resource" id="Resource_1rce6"]
+script = ExtResource("6_l1c16")
+from = "walking"
+to = "standing"
+conditions = {
+"moving": SubResource("Resource_281tc")
 }
 priority = 0
 

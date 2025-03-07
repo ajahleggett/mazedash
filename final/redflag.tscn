@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bngl72dg7o3pl"]
+[gd_scene load_steps=5 format=3 uid="uid://bngl72dg7o3pl"]
 
+[ext_resource type="Script" path="res://redflag.gd" id="1_bgp5n"]
 [ext_resource type="Texture2D" uid="uid://bs1wu41luoxrs" path="res://monsters/red flag.png" id="1_lnfjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aesos"]
@@ -10,6 +11,7 @@ radius = 147.5
 height = 420.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_bgp5n")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -29,3 +31,5 @@ shape = SubResource("RectangleShape2D_aesos")
 position = Vector2(2.50001, -20)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("CapsuleShape2D_7anmk")
+
+[connection signal="area_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
