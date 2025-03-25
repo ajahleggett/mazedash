@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://ihj78221i5oc"]
+[gd_scene load_steps=75 format=3 uid="uid://ihj78221i5oc"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_4oddw"]
 [ext_resource type="Texture2D" uid="uid://unstw8y8yej4" path="res://character-removebg-preview.png" id="1_qt7by"]
@@ -409,12 +409,12 @@ size = Vector2(20, 35)
 [sub_resource type="Resource" id="Resource_e4ibp"]
 script = ExtResource("6_rey42")
 name = "Entry"
-metadata/graph_offset = Vector2(86, 182)
+metadata/graph_offset = Vector2(106, 262)
 
 [sub_resource type="Resource" id="Resource_r76nk"]
 script = ExtResource("6_rey42")
 name = "attack"
-metadata/graph_offset = Vector2(886, 22)
+metadata/graph_offset = Vector2(886, 42)
 
 [sub_resource type="Resource" id="Resource_brgvh"]
 script = ExtResource("6_rey42")
@@ -424,7 +424,12 @@ metadata/graph_offset = Vector2(462, 262)
 [sub_resource type="Resource" id="Resource_eq16x"]
 script = ExtResource("6_rey42")
 name = "walking"
-metadata/graph_offset = Vector2(345, 42)
+metadata/graph_offset = Vector2(465, 42)
+
+[sub_resource type="Resource" id="Resource_q4oee"]
+script = ExtResource("6_rey42")
+name = "damage"
+metadata/graph_offset = Vector2(243, 42)
 
 [sub_resource type="Resource" id="Resource_4cond"]
 script = ExtResource("7_vfwaa")
@@ -501,6 +506,13 @@ conditions = {
 }
 priority = 0
 
+[sub_resource type="Resource" id="Resource_gg3e5"]
+script = ExtResource("7_vfwaa")
+from = "standing"
+to = "damage"
+conditions = {}
+priority = 0
+
 [sub_resource type="Resource" id="Resource_jdpe5"]
 script = ExtResource("9_h3pta")
 name = "attack"
@@ -529,11 +541,19 @@ conditions = {
 }
 priority = 0
 
+[sub_resource type="Resource" id="Resource_5s803"]
+script = ExtResource("7_vfwaa")
+from = "walking"
+to = "damage"
+conditions = {}
+priority = 0
+
 [sub_resource type="Resource" id="Resource_malbu"]
 script = ExtResource("5_llpri")
 states = {
 "Entry": SubResource("Resource_e4ibp"),
 "attack": SubResource("Resource_r76nk"),
+"damage": SubResource("Resource_q4oee"),
 "standing": SubResource("Resource_brgvh"),
 "walking": SubResource("Resource_eq16x")
 }
@@ -547,10 +567,12 @@ transitions = {
 },
 "standing": {
 "attack": SubResource("Resource_trkdl"),
+"damage": SubResource("Resource_gg3e5"),
 "walking": SubResource("Resource_8bg6b")
 },
 "walking": {
 "attack": SubResource("Resource_tt578"),
+"damage": SubResource("Resource_5s803"),
 "standing": SubResource("Resource_8wdfm")
 }
 }

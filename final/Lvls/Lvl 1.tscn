@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://hk8yeo6ioby7"]
+[gd_scene load_steps=8 format=3 uid="uid://hk8yeo6ioby7"]
 
 [ext_resource type="Texture2D" uid="uid://bfghbu7t4kacd" path="res://Lvls/maze 1.jpg" id="1_c708j"]
 [ext_resource type="PackedScene" uid="uid://ihj78221i5oc" path="res://Character.tscn" id="2_jar65"]
 [ext_resource type="PackedScene" uid="uid://c820mrcdq3dfq" path="res://monsters/Pumpkin monster.tscn" id="3_j5qsk"]
 [ext_resource type="Texture2D" uid="uid://bs1wu41luoxrs" path="res://monsters/red flag.png" id="4_ya5jn"]
 [ext_resource type="PackedScene" uid="uid://b8xvf0bc8csnh" path="res://UI.tscn" id="5_ocjv0"]
+[ext_resource type="PackedScene" uid="uid://bngl72dg7o3pl" path="res://end_flag.tscn" id="6_wroq7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0o6vu"]
 vertices = PackedVector2Array(1066.05, 583.031, 59.0703, 586.961, 62.9219, 74.9375, 1068.94, 69.0469)
@@ -17,7 +18,7 @@ offset_bottom = 649.0
 texture = ExtResource("1_c708j")
 
 [node name="player" parent="." instance=ExtResource("2_jar65")]
-position = Vector2(126, 177)
+position = Vector2(106, 172)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -36,6 +37,7 @@ polygon = PackedVector2Array(164, 145, 167, 254, 351, 267, 368, 437, 463, 452, 4
 polygon = PackedVector2Array(1070, 556, 1151, 558, 1151, 500, 1075, 503, 1070, 460, 1167, 460, 1168, 594, 1069, 598)
 
 [node name="flag" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1118, 526)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ya5jn")
@@ -45,3 +47,7 @@ texture = ExtResource("4_ya5jn")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-2, -2)
 navigation_polygon = SubResource("NavigationPolygon_0o6vu")
+
+[node name="EndFlag" parent="." instance=ExtResource("6_wroq7")]
+position = Vector2(1118, 524)
+scene = "Lvl 2"

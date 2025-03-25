@@ -68,6 +68,8 @@ func standing():
 	$AnimatedSprite2D.play('standing')
 	pass
 
+func damage():
+	
 
 func _input(event: InputEvent) -> void:
 	

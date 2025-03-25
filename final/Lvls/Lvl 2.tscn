@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1vdk3qu6ls4d"]
+[gd_scene load_steps=8 format=3 uid="uid://c1vdk3qu6ls4d"]
 
 [ext_resource type="Texture2D" uid="uid://b36xbdsycuf7e" path="res://Lvls/maze 2.webp" id="1_kqj0i"]
 [ext_resource type="PackedScene" uid="uid://ihj78221i5oc" path="res://Character.tscn" id="2_suulx"]
 [ext_resource type="PackedScene" uid="uid://3kxvhkqqu6bx" path="res://monsters/Bat monster.tscn" id="3_y6n66"]
 [ext_resource type="Texture2D" uid="uid://bvhvor5hq72cy" path="res://monsters/yellow flag.png" id="4_4t43w"]
 [ext_resource type="PackedScene" uid="uid://b8xvf0bc8csnh" path="res://UI.tscn" id="5_er607"]
+[ext_resource type="PackedScene" uid="uid://bngl72dg7o3pl" path="res://end_flag.tscn" id="6_vslla"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3e87v"]
 vertices = PackedVector2Array(1025.09, 212.891, 1032.9, 1028.96, 219, 1026.03, 219, 204.109)
@@ -40,6 +41,7 @@ polygon = PackedVector2Array(603, 302, 647, 300, 636, 831, 597, 850, 597, 901, 6
 polygon = PackedVector2Array(216, 585, 164, 589, 163, 656, 221, 656, 218, 701, 134, 695, 132, 547, 215, 543)
 
 [node name="flag2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1157, 597)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_4t43w")
@@ -51,5 +53,9 @@ navigation_polygon = SubResource("NavigationPolygon_3e87v")
 
 [node name="bat" parent="." instance=ExtResource("3_y6n66")]
 position = Vector2(371, 427)
+
+[node name="EndFlag" parent="." instance=ExtResource("6_vslla")]
+position = Vector2(1145, 612)
+flag_texture = ExtResource("4_4t43w")
 
 [editable path="player"]
