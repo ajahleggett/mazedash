@@ -416,6 +416,11 @@ script = ExtResource("6_rey42")
 name = "attack"
 metadata/graph_offset = Vector2(886, 42)
 
+[sub_resource type="Resource" id="Resource_q4oee"]
+script = ExtResource("6_rey42")
+name = "damage"
+metadata/graph_offset = Vector2(243, 42)
+
 [sub_resource type="Resource" id="Resource_brgvh"]
 script = ExtResource("6_rey42")
 name = "standing"
@@ -425,11 +430,6 @@ metadata/graph_offset = Vector2(462, 262)
 script = ExtResource("6_rey42")
 name = "walking"
 metadata/graph_offset = Vector2(465, 42)
-
-[sub_resource type="Resource" id="Resource_q4oee"]
-script = ExtResource("6_rey42")
-name = "damage"
-metadata/graph_offset = Vector2(243, 42)
 
 [sub_resource type="Resource" id="Resource_4cond"]
 script = ExtResource("7_vfwaa")
@@ -491,6 +491,13 @@ conditions = {
 }
 priority = 0
 
+[sub_resource type="Resource" id="Resource_gg3e5"]
+script = ExtResource("7_vfwaa")
+from = "standing"
+to = "damage"
+conditions = {}
+priority = 0
+
 [sub_resource type="Resource" id="Resource_0wnot"]
 script = ExtResource("8_afuhf")
 value = true
@@ -506,13 +513,6 @@ conditions = {
 }
 priority = 0
 
-[sub_resource type="Resource" id="Resource_gg3e5"]
-script = ExtResource("7_vfwaa")
-from = "standing"
-to = "damage"
-conditions = {}
-priority = 0
-
 [sub_resource type="Resource" id="Resource_jdpe5"]
 script = ExtResource("9_h3pta")
 name = "attack"
@@ -524,6 +524,13 @@ to = "attack"
 conditions = {
 "attack": SubResource("Resource_jdpe5")
 }
+priority = 0
+
+[sub_resource type="Resource" id="Resource_5s803"]
+script = ExtResource("7_vfwaa")
+from = "walking"
+to = "damage"
+conditions = {}
 priority = 0
 
 [sub_resource type="Resource" id="Resource_gyg1q"]
@@ -539,13 +546,6 @@ to = "standing"
 conditions = {
 "moving": SubResource("Resource_gyg1q")
 }
-priority = 0
-
-[sub_resource type="Resource" id="Resource_5s803"]
-script = ExtResource("7_vfwaa")
-from = "walking"
-to = "damage"
-conditions = {}
 priority = 0
 
 [sub_resource type="Resource" id="Resource_malbu"]
