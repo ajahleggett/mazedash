@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ww1s3pdeqel"]
+[gd_scene load_steps=4 format=3 uid="uid://4ww1s3pdeqel"]
 
 [ext_resource type="Script" path="res://demo/button.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bm03sxxt1h20m" path="res://monsters/Summer5.png" id="1_1aj7e"]
 [ext_resource type="FontFile" uid="uid://c5nya6skib7a2" path="res://demo/fonts/Fake Identity.ttf" id="1_oeex7"]
 
 [node name="Control" type="Control"]
@@ -12,13 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.298039, 0.670588, 0.831373, 1)
+
+[node name="bg scenery" type="Sprite2D" parent="ColorRect"]
+position = Vector2(561, 429)
+texture = ExtResource("1_1aj7e")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -39,16 +43,16 @@ theme_override_fonts/font = ExtResource("1_oeex7")
 theme_override_font_sizes/font_size = 32
 text = "LOADING
 
-SCREEN"
+...."
 script = ExtResource("1")
-scene = "scene2"
+scene = "Lvl 1"
 fade_in_speed = 2.0
 fade_out_pattern = "scribbles"
 fade_in_pattern = "crooked_tiles"
 fade_out_smoothness = 0.2
 fade_in_smoothness = 0.3
 fade_out_inverted = true
-color = Color(0.745098, 0.411765, 0.388235, 1)
+color = Color(1, 1, 1, 1)
 timeout = 0.2
 add_to_back = false
 
@@ -61,16 +65,17 @@ custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_oeex7")
 theme_override_font_sizes/font_size = 32
-text = "SCENE 1"
+text = "LEVEL 1
+"
 script = ExtResource("1")
-scene = "scene2"
+scene = "Lvl 1"
 fade_in_speed = 2.0
 fade_out_pattern = "scribbles"
 fade_in_pattern = "crooked_tiles"
 fade_out_smoothness = 0.2
 fade_in_smoothness = 0.3
 fade_out_inverted = true
-color = Color(0.752941, 0.584314, 0.290196, 1)
+color = Color(1, 1, 1, 1)
 timeout = 0.2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
@@ -104,7 +109,7 @@ theme_override_fonts/font = ExtResource("1_oeex7")
 theme_override_font_sizes/font_size = 32
 text = "BACK"
 script = ExtResource("1")
-scene = "back"
+scene = "scene1"
 fade_out_speed = 0.5
 fade_in_speed = 0.5
 color = Color(0.564706, 0.376471, 0.584314, 1)
@@ -115,12 +120,14 @@ custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_oeex7")
 theme_override_font_sizes/font_size = 32
-text = "NOTHING"
+text = "Lvl 2"
 script = ExtResource("1")
+scene = "Lvl 2"
 fade_out_speed = 0.5
 fade_in_speed = 0.5
-color = Color(0.564706, 0.376471, 0.584314, 1)
+color = Color(0.313519, 0.481678, 0.407326, 1)
 timeout = 0.5
+clickable = true
 
 [node name="pause_and_resume" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)

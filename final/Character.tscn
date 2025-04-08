@@ -395,7 +395,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hq7xc")
 }],
-"loop": true,
+"loop": false,
 "name": &"walking right",
 "speed": 5.0
 }]
@@ -582,15 +582,17 @@ name = ""
 script = ExtResource("1_4oddw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4.5, 4.5)
+zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_plr3c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yy45l")
-animation = &"attack right"
+animation = &"walking right"
 autoplay = "standing"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
